@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="jumbotron">
+        <h1>Dora, <small>the explorer</small></h1>
+        <p class="lead">Dora is a network host discovery daemon. Built in <i>Python</i> and <i>JavaScript</i></p>
+        <p><a class="btn btn-lg btn-success" href="#" role="button">Start exploring</a></p>
+    </div>
+</div>
+
+<div class="container">
+    <div class="media" ng-repeat="host in currentServices">
+        <div class="media-left">
+            <a href="#!/host/{{host._source.addresses.ipv4}}">
+                <img class="media-object" src="/assets/images/icon-server.png" width="64" alt="">
+            </a>
+        </div>
+        <div class="media-body">
+            <h4 class="media-heading"><a href="#!/host/{{host._source.addresses.ipv4}}">{{host._source.addresses.ipv4}}</a> <small><!-- <span class="label label-default">{{service._source.hostnames[0].type}}</span> --> {{host._source.hostnames[0].name}}</small></h4>
+            <div ng-repeat="service in host._source.services">
+                <div>
+                    <a href="#!/port/{{service.proto}}/{{service.port}}"><span class="label label-default" ng-class="{'label-success': service.state == 'open', 'label-danger': service.state == 'close'}">{{service.proto}} {{service.port}}</span></a>
+                    <a href="#!/service/{{service.name}}"><span class="label label-info">{{service.name}}</span></a>
+                    <span class="text-muted">{{service.product}}</span>
+                </div>
+            </div>
+        </div>
+        <hr />
+    </div>
+</div>

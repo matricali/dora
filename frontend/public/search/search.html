@@ -1,0 +1,7 @@
+<div class="container">
+    <h1><small style="display: block">Search Results:</small> {{keyword}}</h1>
+    <div class="media" ng-repeat="host in currentServices" ng-animate="{enter: 'animate-enter', leave: 'animate-leave'}">
+        <div ng-include="'views/partials/hosts-list.html'"></div>
+        <hr />
+    </div>
+</div>

@@ -1,0 +1,17 @@
+<div class="media-left">
+    <a href="#!/host/{{host._source.addresses.ipv4}}">
+        <img class="media-object" src="/assets/images/icon-server.png" width="64" alt="">
+    </a>
+</div>
+<div class="media-body">
+    <h4 class="media-heading"><a href="#!/host/{{host._source.addresses.ipv4}}">{{host._source.addresses.ipv4}}</a> <small><!-- <span class="label label-default">{{service._source.hostnames[0].type}}</span> --> {{host._source.hostnames[0].name}}</small></h4>
+    <div ng-repeat="service in host._source.services">
+        <div>
+            <a href="#!/port/{{service.proto}}/{{service.port}}"><span class="label label-default" ng-class="{'label-success': service.state == 'open', 'label-danger': service.state == 'close'}">{{service.proto}} {{service.port}}</span></a>
+            <a href="#!/service/{{service.name}}"><span class="label label-info">{{service.name}}</span></a>
+            <span class="text-muted">{{service.product}}</span>
+            <a class="btn btn-link" ng-if="service.state == 'open' && service.port == 80" href="http://{{host._source.addresses.ipv4}}:80/" title="Open in browser" target="_blank"><i class="fa fa-external-link"></i> Open</a>
+            <a class="btn btn-link" ng-if="service.state == 'open' && service.port == 443" href="https://{{host._source.addresses.ipv4}}:443/" title="Open in browser" target="_blank"><i class="fa fa-external-link"></i> Open</a>
+        </div>
+    </div>
+</div>

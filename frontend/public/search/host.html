@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="media" ng-repeat="host in currentServices" ng-animate="{enter: 'animate-enter', leave: 'animate-leave'}">
+        <button class="btn btn-default pull-right"><i class="fa fa-refresh"></i> Re-scan</button>
+        <h1><small style="display: block">{{host._source.hostnames[0].name || hostGeodata.hostname || 'No Hostname'}}</small>{{host._source.addresses.ipv4}}</h1>
+        <!-- <h2>
+            <span class="label label-default" ng-class="{'label-success': host._source.status.state == 'up', 'label-danger': host._source.status.state == 'down'}">{{host._source.status.state}}</span>
+            <span class="label label-info">{{host._source.status.reason}}</span>
+        </h2> -->
+        <div>
+            <p>
+                <img class="img-responsive" src="https://maps.googleapis.com/maps/api/staticmap?center={{hostGeodata.loc}}&zoom=9&size=800x250&sensor=false&scale=2" alt="{{hostGeodata.country}} Map" title="{{hostGeodata.country}} Map" />
+            </p>
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td><strong>Network</strong></td>
+                        <td>{{hostGeodata.org}}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>City</strong></td>
+                        <td>{{hostGeodata.city}}, {{hostGeodata.region}}, {{hostGeodata.country}}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Latitude/Longitude</strong></td>
+                        <td>{{hostGeodata.loc}}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Postal Code</strong></td>
+                        <td>{{hostGeodata.postal}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h2>Discovered services on this host:</h2>
+            <div ng-include="'views/partials/services-list.html'"></div>
+            <img src="{{base64screenshot}}" />
+        <div>
+    </div>
+</div>

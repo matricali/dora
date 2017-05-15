@@ -1,0 +1,29 @@
+<div class="media-body">
+    <div>
+        <!-- <div>
+            <a href="#!/port/{{service.proto}}/{{service.port}}"><span class="label label-default" ng-class="{'label-success': service.state == 'open', 'label-danger': service.state == 'close'}">{{service.proto}} {{service.port}}</span></a>
+            <a href="#!/service/{{service.name}}"><span class="label label-info">{{service.name}}</span></a>
+            <span class="text-muted">{{service.product}}</span>
+        </div> -->
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Port</th>
+                    <th>Service</th>
+                    <th>Service description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="service in host._source.services" ng-animate="{enter: 'animate-enter', leave: 'animate-leave'}">
+                    <td><a href="#!/search/port/{{service.proto}}/{{service.port}}">{{service.proto | uppercase}} {{service.port}}</a></a></td>
+                    <td><a href="#!/search/service/{{service.name | urlencode}}">{{service.name}}</a></td>
+                    <td>
+                        <a href="#!/search/product/{{service.product | urlencode}}">{{service.product}}</a>
+                        <a class="btn btn-link" ng-if="service.state == 'open' && service.port == 80" href="http://{{host._source.addresses.ipv4}}:80/" title="Open in browser" target="_blank"><i class="fa fa-external-link"></i> Open</a>
+                        <a class="btn btn-link" ng-if="service.state == 'open' && service.port == 443" href="https://{{host._source.addresses.ipv4}}:443/" title="Open in browser" target="_blank"><i class="fa fa-external-link"></i> Open
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="doraFrontend" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="doraFrontend" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="doraFrontend" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="doraFrontend" class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Dora Bot v1.0.0</title>
+    <meta name="description" content="Dora, the explorer is a network hosts auto-discovery daemon">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script>
+    window.paceOptions = {
+        document: true, // disabled
+        eventLag: true,
+        restartOnPushState: true,
+        restartOnRequestAfter: true,
+        ajax: {
+            trackMethods: [ 'POST','GET']
+        }
+    };
+    </script>
+    <script src="pace.min.js"></script>
+    <style>
+    .pace {
+        -webkit-pointer-events: none;
+        pointer-events: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+    }
+    .pace.pace-inactive .pace-progress {
+        display: none;
+    }
+    .pace .pace-progress {
+        position: fixed;
+        z-index: 2000;
+        top: 0;
+        right: 0;
+        height: 5rem;
+        width: 5rem;
+        -webkit-transform: translate3d(0, 0, 0) !important;
+        -ms-transform: translate3d(0, 0, 0) !important;
+        transform: translate3d(0, 0, 0) !important;
+    }
+    .pace .pace-progress:after {
+        display: block;
+        position: absolute;
+        top: 0;
+        right: .5rem;
+        content: attr(data-progress-text);
+        font-family: "Helvetica Neue", sans-serif;
+        font-weight: 100;
+        font-size: 5rem;
+        line-height: 1;
+        text-align: right;
+        color: rgba(0, 0, 0, 0.19999999999999996);
+    }
+    .animate-enter {
+        -webkit-transition: 1s linear all; /* Chrome */
+        transition: 1s linear all;
+        opacity: 0;
+    }
+    .animate-enter.animate-enter-active {
+        opacity: 1;
+    }
+    </style>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="app.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+</head>
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#"><img alt="Dora, the explorer" src="assets/images/logo.png" height="28" /> Dora</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <form class="navbar-form navbar-left">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search" id="search-field">
+                    </div>
+                    <button type="submit" class="btn btn-default" onclick="window.location.href = '#!/search/' + angular.element('#search-field').val();">Submit</button>
+                </form>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#!/settings"><i class="fa fa-cog"></i> Settings</a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#!/new-scan" class="btn btn-link btn-xs btn-navbar"><i class="fa fa-plus"></i> New scan</a></li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+
+    <!-- <div class="container">
+        <ul class="nav nav-pills">
+            <li role="presentation" ng-class="{active: $route.current.activetab == 'view1'}"><a href="#!/view1">view1</a></li>
+            <li role="presentation" ng-class="{active: $route.current.activetab == 'view2'}"><a href="#!/view2">view2</a></li>
+        </ul>
+    </div> -->
+
+    <!--[if lt IE 7]>
+    <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <div ng-view ng-animate="{enter: 'animate-enter', leave: 'animate-leave'}"></div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2017 Dora, the explorer. <a href="https://github.com/jorge-matricali/dora" title="View on Github"><i class="fa fa-github"></i> jorge-matricali/dora</a></p>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- In production use:
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+    -->
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="app.js"></script>
+    <script src="view1/view1.js"></script>
+    <script src="view2/view2.js"></script>
+    <script src="search/search.js"></script>
+    <script src="components/version/version.js"></script>
+    <script src="components/version/version-directive.js"></script>
+    <script src="components/version/interpolate-filter.js"></script>
+</body>
+</html>
