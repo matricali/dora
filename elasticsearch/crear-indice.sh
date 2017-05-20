@@ -1,5 +1,5 @@
 #!/bin/bash
-curl 'http://localhost:9200/dbot' -X PUT -d '{
+curl 'http://localhost:9200/dora' -X PUT -d '{
     "settings" : {
         "index" : {
             "number_of_shards" : 5,
