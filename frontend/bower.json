@@ -1,8 +1,8 @@
 {
-  "name": "dbot-frontend",
+  "name": "dora-frontend",
   "description": "A frontend for Dora Bot",
   "version": "1.0.0",
-  "homepage": "https://github.com/jorge-matricali/dbot",
+  "homepage": "https://github.com/jorge-matricali/dora",
   "license": "MIT",
   "private": true,
   "dependencies": {
@@ -11,6 +11,8 @@
     "angular-loader": "~1.5.0",
     "angular-mocks": "~1.5.0",
     "angular-animate": "~1.5.0",
-    "bootstrap": "~3.3.7"
+    "angular-bootstrap": "~2.5.0",
+    "bootstrap": "~3.3.7",
+    "angular-google-maps": "^2.4.1"
   }
 }
