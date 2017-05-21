@@ -1,2 +1,5 @@
 python-nmap==0.6.1
 elasticsearch>=5.0.0,<6.0.0
+Faker==0.7.12
+python-geoip==1.2
+python-geoip-geolite2==2015.303
