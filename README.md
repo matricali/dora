@@ -1,4 +1,4 @@
-[![Software License](https://img.shields.io/badge/license-BSD--3-brightgreen.svg?style=flat-square)](https://github.com/jorge-matricali/dora/blob/master/LICENSE.txt)
+[![license](https://img.shields.io/github/license/jorge-matricali/dora.svg)]() [![GitHub contributors](https://img.shields.io/github/contributors/jorge-matricali/dora.svg)]() [![Requires.io](https://img.shields.io/requires/github/jorge-matricali/dora.svg)]()
 
 # Dora, the explorer
 Dora is a network host discovery daemon. Built in _Python_ and _JavaScript_
