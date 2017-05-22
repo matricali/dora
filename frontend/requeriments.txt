@@ -1,0 +1,4 @@
+Flask==0.10.1
+python-geoip==1.2
+python-geoip-geolite2==2015.303
+python-nmap==0.6.1
