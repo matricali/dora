@@ -10,8 +10,8 @@
             <a href="#!/port/{{service.proto}}/{{service.port}}"><span class="label label-default" ng-class="{'label-success': service.state == 'open', 'label-danger': service.state == 'close'}">{{service.proto}} {{service.port}}</span></a>
             <a href="#!/service/{{service.name}}"><span class="label label-info">{{service.name}}</span></a>
             <span class="text-muted">{{service.product}}</span>
-            <a class="btn btn-link" ng-if="service.state == 'open' && service.port == 80" href="http://{{host._source.addresses.ipv4}}:80/" title="Open in browser" target="_blank"><i class="fa fa-external-link"></i> Open</a>
-            <a class="btn btn-link" ng-if="service.state == 'open' && service.port == 443" href="https://{{host._source.addresses.ipv4}}:443/" title="Open in browser" target="_blank"><i class="fa fa-external-link"></i> Open</a>
+            <a class="btn btn-link" ng-if="service.state == 'open' && service.port == 80" href="http://{{host._source.addresses.ipv4}}:80/" title="Open in browser" target="_blank" uib-popover="Test" popover-trigger="focus"><i class="fa fa-external-link"></i> Open</a>
+            <a class="btn btn-link" ng-if="service.state == 'open' && service.port == 443" href="https://{{host._source.addresses.ipv4}}:443/" title="Open in browser" target="_blank" rel="popover" data-content="" title="Popover with image"><i class="fa fa-external-link"></i> Open</a>
         </div>
     </div>
 </div>

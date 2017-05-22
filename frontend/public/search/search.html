@@ -1,5 +1,10 @@
 <div class="container">
     <h1><small style="display: block">Search Results:</small> {{keyword}}</h1>
+    <p>Found {{totalFound}} items</p>
+    <ui-gmap-google-map ng-if="map.center" center="map.center" zoom="map.zoom" options="map.options">
+        <ui-gmap-layer type="TrafficLayer" show="map.showTraficLayer"></ui-gmap-layer>
+        <ui-gmap-markers models="mapMarkers" coords="'position'" idKey="'title'" label="'title'" title="'title'" fit="true" click="go('/host/' + title)"></ui-gmap-markers>
+    </ui-gmap-google-map>
     <div class="media" ng-repeat="host in currentServices" ng-animate="{enter: 'animate-enter', leave: 'animate-leave'}">
         <div ng-include="'views/partials/hosts-list.html'"></div>
         <hr />
